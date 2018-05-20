@@ -1,9 +1,16 @@
 %% Plots: plotea h_disenado, absTH y diff_h_disenado
 %% Gráficos
-n = 0:M;
+n = 0:length(h_disenado);
 nfft = 1024;
 H_disenado = fft(h_disenado, nfft); 
 H_disenado = H_disenado(1:nfft/2); 
+
+nfft = 1024;
+H_total = fft(sist_total, nfft);
+H_total = H_total(1:nfft/2); 
+
+absTH = absTH(1:nfft/2);
+diff_h_modulo = abs(abs(H_disenado) - absTH);
 
 figure
 % Respuesta en frecuencia
@@ -22,11 +29,6 @@ plot(w/pi, grpdelay(h_disenado,1,nfft/2) ,'LineWidth',2)
 xlabel('\omega/\pi');
 ylabel('Retardo del h diseñado [muestras]')
 grid on
-
-n = 1:length(h);
-nfft = 1024;
-H_total = fft(sist_total, nfft);
-H_total = H_total(1:nfft/2); 
 
 figure
 % Respuesta en frecuencia del filtro total
