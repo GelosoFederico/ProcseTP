@@ -2,7 +2,7 @@
 start %corre el script que carga las cosas
 
 %% Parámetros más modificables
-% Ws son 0.01953 0.06452 0.1016 0.1452 10.1719 0.2227 0.4375 0.4805 0.707 0.9512
+% Ws son 0.01953 0.06452 0.1016 0.1452 0.1719 0.2227 0.4375 0.4805 0.707 0.9512
 Wc = [0.0365*pi 0.133*pi 0.1872*pi 0.459*pi 0.78*pi 0.86*pi];  %Salen de promediar los omegas de a 2, pero hay que ir retocándolos para que funcione bien
 Amplitudes = [2.3045 0.2855 3.790 0.5713 1.3110 2.250 2.7];  %Salen de ver el gráfico de la inversa de H. También hay que retocarlos
 min_DW = 0.1*pi;                                           %Salen del mínimo deltaW para las bandas de transición

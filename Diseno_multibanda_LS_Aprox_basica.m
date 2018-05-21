@@ -1,12 +1,15 @@
 %% Diseño por cuadrados mínimos
 close all;
+start
 
 f = [0 0.01952 0.06452 0.1016 0.1452 0.1719 0.2227 0.4375 0.4805 0.707 0.8105 0.9512]; %Frecuencias a las que indico valores
 A = [2.297 2.321 0.3026 0.2951 3.84 3.827 0.575 0.595 1.26 1.33 1.845 4.014];
 min_DW = 0.1;
-deltas = [0.036 0.001 0.177 0.0048 0.046 0.1];
+deltas = [0.0156 0.0726 0.04658 0.008408 0.055 0.1];
 M = round((-10*log10(min(deltas))-13)/(2.324 * min_DW));
-M = M+1;
+if mod(M,2)==1
+    M = M+1;
+end
 inv_deltas = 1./deltas;
 
 % respuesta impulsiva del filtro
@@ -21,8 +24,10 @@ diff_h_modulo = abs(abs(H_disenado) - absTH);
 
 
 sist_total = conv(h_disenado,h);
+plot_diseno
 
 %% Gráficos
+%{
 n = 0:M;
 nfft = 1024;
 H_disenado = fft(h_disenado, nfft); 
@@ -75,3 +80,5 @@ title({str1;str2})
 ylabel('|H_d(e^{j\omega}| - |H(e^{j\omega}|')
 xlabel('\omega/\pi');
 grid on
+
+%}
